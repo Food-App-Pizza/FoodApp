@@ -259,7 +259,7 @@ class _PilihanCrustState extends State<PilihanCrust> {
 class DetailsAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final CartListBloc bloc = BlocProvider.getBloc<CartListBloc>();
+    // final CartListBloc bloc = BlocProvider.getBloc<CartListBloc>();
     return Container(
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

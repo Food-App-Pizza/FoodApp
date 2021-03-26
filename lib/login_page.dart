@@ -15,6 +15,7 @@ class PasswordFieldValidator {
 }
 
 class LoginPage extends StatefulWidget {
+  
   const LoginPage({this.onSignedIn});
   final VoidCallback onSignedIn;
 
@@ -116,6 +117,8 @@ class _LoginPageState extends State<LoginPage> {
         onSaved: (String value) => _password = value,
       ),
     ];
+
+
   }
 
   List<Widget> buildSubmitButtons() {

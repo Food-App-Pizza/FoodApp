@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text('Welcome, dear Customer',style: TextStyle(
+              Text('Welcome ,dear Customer' ,style: TextStyle(
                 fontSize: 25 ,
                 fontWeight: FontWeight.w800,
               )),
@@ -190,7 +190,7 @@ class _HomeState extends State<Home> {
         bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(Icons.person), title: Text('Profile')),
+                icon: Icon(Icons.home_outlined), title: Text('Home')),
             BottomNavigationBarItem(
                 icon: Icon(Icons.local_pizza_outlined), title: Text('Menu')),
             BottomNavigationBarItem(
