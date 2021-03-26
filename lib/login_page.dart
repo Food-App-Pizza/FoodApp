@@ -80,18 +80,22 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(16.0),
-        child: Form(
-          key: formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: buildInputs() + buildSubmitButtons(),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(children: <Widget>[
+          Container(child: Image.asset('images/pizzas.jpg')),
+          SizedBox(height:50),
+          Container(
+            padding: EdgeInsets.all(16.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: buildInputs() + buildSubmitButtons(),
+              ),
+            ),
           ),
-        ),
+        ]),
       ),
     );
   }
@@ -118,6 +122,7 @@ class _LoginPageState extends State<LoginPage> {
     if (_formType == FormType.login) {
       return <Widget>[
         RaisedButton(
+          color: Colors.redAccent[200],
           key: Key('signIn'),
           child: Text('Login', style: TextStyle(fontSize: 20.0)),
           onPressed: validateAndSubmit,
@@ -130,6 +135,7 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       return <Widget>[
         RaisedButton(
+          color: Colors.redAccent[200],
           child: Text('Create an account', style: TextStyle(fontSize: 20.0)),
           onPressed: validateAndSubmit,
         ),

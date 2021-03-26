@@ -16,7 +16,7 @@ dependencies:
   curved_navigation_bar: ^0.3.2
   font_awesome_flutter: ^8.8.1
   cupertino_icons: ^0.1.3
-
+  animated_text_kit:
   bloc_pattern: 
   rxdart:
 

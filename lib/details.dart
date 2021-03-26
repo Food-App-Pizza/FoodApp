@@ -22,6 +22,22 @@ class _CartDetailsState extends State<CartDetails> {
   void Function(FoodItem cate) foodItem;
 
   @override
+  Widget crust(){
+              if(widget.temp.cate == 'food'){
+              return Container(
+                  padding: EdgeInsets.only(left: 20),
+                  alignment: Alignment.centerLeft,
+                  child: Text('Crust Option (Optional) :',
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w800)));
+              }
+              else{
+                return(SizedBox(height: 0));
+              }
+  }
+
+
+
   Widget build(BuildContext context) {
     final CartListBloc bloc = BlocProvider.getBloc<CartListBloc>();
     return Scaffold(
@@ -37,7 +53,9 @@ class _CartDetailsState extends State<CartDetails> {
                     title(),
                   ])),
               picture(),
-              SizedBox(height: 30),
+              SizedBox(height:15),
+              crust(),
+              SizedBox(height:15),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -136,12 +154,15 @@ class _CartDetailsState extends State<CartDetails> {
               SizedBox(
                 height: 5,
               ),
-              Text(
-                widget.temp.desc,
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                    color: Colors.black),
+              Container(
+                width: 400,
+                child: Text(
+                  widget.temp.desc,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                      color: Colors.black),
+                ),
               )
             ],
           )
@@ -162,13 +183,13 @@ class _CartDetailsState extends State<CartDetails> {
       onTap: () {
         addToCart(widget.temp);
         final snackBar = SnackBar(
-          content: Text(widget.temp.title + 'added to Cart'),
+          content: Text(widget.temp.title + ' added to Cart'),
           duration: Duration(milliseconds: 550),
         );
         Scaffold.of(context).showSnackBar(snackBar);
       },
       child: Padding(
-        padding: EdgeInsets.only(right: 20, left: 20),
+        padding: EdgeInsets.fromLTRB(20,20,20,20),
         child: Container(
           child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -272,3 +293,4 @@ class DetailsAppBar extends StatelessWidget {
     );
   }
 }
+

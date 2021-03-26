@@ -36,7 +36,7 @@ class _RootPageState extends State<RootPage> {
     });
   }
 
-  void _signedOut() {
+  void signedOut() {
     setState(() {
       authStatus = AuthStatus.notSignedIn;
     });
@@ -53,8 +53,8 @@ class _RootPageState extends State<RootPage> {
         );
       case AuthStatus.signedIn:
         return MaterialApp(
-          home:HomePage(
-          onSignedOut: _signedOut,)
+          home:Home(
+          onSignedOut: signedOut,)
         );
     }
     return null;

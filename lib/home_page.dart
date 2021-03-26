@@ -2,24 +2,26 @@ import 'package:flutter/material.dart';
 import 'auth.dart';
 import 'auth_provider.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'bloc/listTileColorBloc.dart';
-import 'history.dart';
-import 'nav.dart';
 import 'bloc/cartlistBloc.dart';
 import 'cart.dart';
 import 'const/themeColor.dart';
 import 'model/food_item.dart';
 import 'details.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({this.onSignedOut});
   final VoidCallback onSignedOut;
 
-  Future<void> _signOut(BuildContext context) async {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  Future<void> _signOut() async {
     try {
       final BaseAuth auth = AuthProvider.of(context).auth;
       await auth.signOut();
-      onSignedOut();
+      widget.onSignedOut();
     } catch (e) {
       print(e);
     }
@@ -29,26 +31,56 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome'),
-        actions: <Widget>[
-          FlatButton(
-            child: Text('Logout',
-                style: TextStyle(fontSize: 17.0, color: Colors.white)),
-            onPressed: () => _signOut(context),
-          )
-        ],
-      ),
-      body: Container(
-        child: IconButton(
-          icon: Icon(Icons.login_outlined),
-          onPressed: (){
-               Navigator.push(
-            context,MaterialPageRoute(builder: (context) => Home()),
-          );
-          },
+        backgroundColor: Color.fromRGBO(150, 15, 15, 1),
+        title: Container(
+          alignment: Alignment.centerRight,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text('Welcome, dear Customer',style: TextStyle(
+                fontSize: 25 ,
+                fontWeight: FontWeight.w800,
+              )),
+              Padding(
+                padding: const EdgeInsets.only(left:60),
+                child: GestureDetector(
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10), color: Colors.redAccent[200]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text('Logout',
+                          style: TextStyle(fontSize: 18.0, color: Colors.white)),
+                    ),
+                  ),
+                  onTap: () => _signOut(),
+                ),
+              ),
+            ],
           ),
         ),
-      );
+      ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(children: <Widget>[
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+              alignment: Alignment.center,
+              child: Column(children: <Widget>[
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[]),
+              ]),
+            ),
+            Container(
+              child: Image.asset('images/pizza.png'),
+            )
+          ]),
+        ),
+      ),
+    );
   }
 }
 
@@ -121,18 +153,31 @@ class __homeState extends State<_home> {
 }
 
 class Home extends StatefulWidget {
+  const Home({this.onSignedOut});
+  final Function() onSignedOut;
+
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  int _SelectedIndex = 0;
-  List<Widget> _widgetOptions = <Widget>[
-    _home(),
-    Cart(),
-    History(),
-  ];
+  Future<void> _signOut() async {
+    try {
+      final BaseAuth auth = AuthProvider.of(context).auth;
+      await auth.signOut();
+      widget.onSignedOut();
+    } catch (e) {
+      print(e);
+    }
+  }
 
+  Widget homePage() {
+    return HomePage(
+      onSignedOut: widget.onSignedOut,
+    );
+  }
+
+  int _SelectedIndex = 0;
   void _onItemTap(int index) {
     setState(() {
       _SelectedIndex = index;
@@ -145,16 +190,21 @@ class _HomeState extends State<Home> {
         bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(Icons.home), title: Text('Home')),
+                icon: Icon(Icons.person), title: Text('Profile')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.food_bank), title: Text('Order')),
+                icon: Icon(Icons.local_pizza_outlined), title: Text('Menu')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.history), title: Text('History')),
+                icon: Icon(Icons.shopping_cart), title: Text('Cart')),
           ],
           currentIndex: _SelectedIndex,
           onTap: _onItemTap,
+          selectedItemColor: Themes.color,
         ),
-        body: _widgetOptions.elementAt(_SelectedIndex));
+        body: <Widget>[
+          homePage(),
+          _home(),
+          Cart(),
+        ].elementAt(_SelectedIndex));
   }
 }
 
@@ -180,12 +230,6 @@ class ItemContainer extends StatelessWidget {
       onTap: () {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => CartDetails(foodItem)));
-        // addToCart(foodItem);
-        // final snackBar = SnackBar(
-        //   content: Text('${foodItem.title} added to Cart'),
-        //   duration: Duration(milliseconds: 550),
-        // );
-        // Scaffold.of(context).showSnackBar(snackBar);
       },
       child: Items(
         desc: foodItem.desc,
@@ -216,7 +260,6 @@ class _FirstHalfState extends State<FirstHalf> {
       padding: const EdgeInsets.fromLTRB(15, 25, 0, 0),
       child: Column(
         children: <Widget>[
-          CustomAppBar(),
           title(),
           SizedBox(height: 20),
           Search(
@@ -472,28 +515,33 @@ Widget title() {
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
       Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            color: Themes.color),
         margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-        color: Themes.color,
         width: 400,
         height: 100,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              "RESTORAN",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 30,
+        child: Padding(
+          padding: EdgeInsets.only(left: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "RESTORAN",
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 30,
+                ),
               ),
-            ),
-            Text(
-              "KU..........!!!!!!!!!!!!!!!!!!!!!!!!!!",
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 30,
+              Text(
+                "KU..........!!!!!!!!!!!!!!!!!!!!!!!!!!",
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 30,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       )
     ],

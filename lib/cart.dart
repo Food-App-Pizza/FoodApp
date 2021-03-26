@@ -1,6 +1,8 @@
+
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizza/checkout.dart';
 import 'bloc/cartlistBloc.dart';
 import 'bloc/listTileColorBloc.dart';
 import 'const/themeColor.dart';
@@ -40,13 +42,20 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: 20, bottom: 10,top: 5),
+  final CartListBloc bloc = BlocProvider.getBloc<CartListBloc>();
+  return Container(
+      margin: EdgeInsets.only(left: 20, bottom: 10, top: 5),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           totalAmount(foodItems),
-          nextButtonBar(),
+          // nextButtonBar(context), 
+          StreamBuilder(
+            stream: bloc.listStream,
+            builder: (context, snapshot) {
+              List<FoodItem> foodItems = snapshot.data;
+              int length = foodItems != null ? foodItems.length : 0;
+              return nextButtonBar(length, context, foodItems);})
         ],
       ),
     );
@@ -55,7 +64,7 @@ class BottomBar extends StatelessWidget {
   Container totalAmount(List<FoodItem> foodItems) {
     return Container(
       margin: EdgeInsets.only(right: 10),
-      padding: EdgeInsets.fromLTRB(20,10,20,20),
+      padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -81,27 +90,37 @@ class BottomBar extends StatelessWidget {
     return totalAmount.toStringAsFixed(0);
   }
 
-  Container nextButtonBar() {
-    return Container(
-      margin: EdgeInsets.only(right: 25),
-      padding: EdgeInsets.all(25),
-      decoration: BoxDecoration(
-          color: Themes.color, borderRadius: BorderRadius.circular(15)),
-      child: Row(
-        children: <Widget>[
-          Text(
-            "15-25 min",
-            style: TextStyle(
-                fontWeight: FontWeight.w800, fontSize: 14, color: Colors.white),
-          ),
-          Spacer(),
-          Text(
-            "Next",
-            style: TextStyle(
-                fontWeight: FontWeight.w900, fontSize: 16, color: Colors.white),
-          ),
-        ],
+  GestureDetector nextButtonBar(int length, BuildContext context, List<FoodItem> foodItems) {
+    return GestureDetector(
+      child: Container(
+        margin: EdgeInsets.only(right: 25),
+        padding: EdgeInsets.all(25),
+        decoration: BoxDecoration(
+            color: Themes.color, borderRadius: BorderRadius.circular(15)),
+        child: Row(
+          children: <Widget>[ 
+            Text(
+              "30-45 min",
+              style: TextStyle(
+                  fontWeight: FontWeight.w800,
+                  fontSize: 14,
+                  color: Colors.white),
+            ),
+            Spacer(),
+            Text(
+              "Order now",
+              style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 16,
+                  color: Colors.white),
+            ),
+          ],
+        ),
       ),
+       onTap:(){
+         if(length !=  0)
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Checkout()));
+        }
     );
   }
 }
@@ -117,14 +136,13 @@ class CartBody extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(35, 40, 25, 0),
       child: Column(
         children: <Widget>[
-          CustomAppBar(),
           title(),
           Expanded(
             flex: 1,
             child: foodItems.length > 0 ? foodItemList() : noItemContainer(),
           ),
           Container(
-           child: BottomBar(foodItems),
+            child: BottomBar(foodItems),
           )
         ],
       ),

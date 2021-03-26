@@ -1,7 +1,6 @@
 import 'package:pizza/model/food_item.dart';
 
 class CartProvider {
-  //couterProvider only consists of a counter and a method which is responsible for increasing the value of count
   List<FoodItem> foodItems = [];
 
   List<FoodItem> addToList(FoodItem foodItem) {
@@ -30,10 +29,10 @@ class CartProvider {
 
   List<FoodItem> removeFromList(FoodItem foodItem) {
     if (foodItem.quantity > 1) {
-      //only decrease the quantity
+
       decreaseItemQuantity(foodItem);
     } else {
-      //remove it from the list
+      
       foodItems.remove(foodItem);
     }
     return foodItems;

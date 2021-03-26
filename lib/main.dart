@@ -8,7 +8,6 @@ import 'auth_provider.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'bloc/cartlistBloc.dart';
 import 'package:pizza/bloc/listTileColorBloc.dart';
-import 'package:pizza/const/themeColor.dart';
 
 void main() => runApp(MyApp());
 
