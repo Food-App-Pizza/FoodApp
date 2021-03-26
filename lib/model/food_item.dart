@@ -83,7 +83,7 @@ FooditemList fooditemList = FooditemList(foodItems: [
       title: "Strawberry Milkshake",
       desc: "Milkshake with Strawberry flavor",
       price: 35000,
-      imgUrl:"https://food.fnr.sndimg.com/content/dam/images/food/fullset/2021/02/03/BobbyFlay_BasicVanillaMilkshake_H.jpg.rend.hgtvcom.826.620.suffix/1612401890664.jpeg",
+      imgUrl:"https://c4.wallpaperflare.com/wallpaper/147/926/442/strawberry-milkshake-wallpaper-preview.jpg",
       cate: "drink"
       ),
       FoodItem(

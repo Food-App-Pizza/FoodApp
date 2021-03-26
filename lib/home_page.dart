@@ -522,19 +522,19 @@ Widget title() {
         width: 400,
         height: 100,
         child: Padding(
-          padding: EdgeInsets.only(left: 20),
+          padding: EdgeInsets.fromLTRB( 20,10,0,0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "RESTORAN",
+                "Popolamama",
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 30,
                 ),
               ),
               Text(
-                "KU..........!!!!!!!!!!!!!!!!!!!!!!!!!!",
+                "Pizza",
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                   fontSize: 30,

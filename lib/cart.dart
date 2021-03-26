@@ -23,7 +23,6 @@ class Cart extends StatelessWidget {
             body: SafeArea(
               child: CartBody(foodItems),
             ),
-            // bottomNavigationBar: BottomBar(foodItems),
           );
         } else {
           return Container(
@@ -136,6 +135,7 @@ class CartBody extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(35, 40, 25, 0),
       child: Column(
         children: <Widget>[
+          CustomAppBar(),
           title(),
           Expanded(
             flex: 1,
@@ -340,7 +340,7 @@ class CustomAppBar extends StatelessWidget {
               size: 30,
             ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).maybePop();
             },
           ),
         ),
