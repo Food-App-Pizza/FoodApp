@@ -1,4 +1,4 @@
-Anggota Kelompok:
+Anggota Kelompok:  
 Evorius Fernaldy  535190004  
 Evan Salim        535190012  
 Radika Yudha      535190028  
