@@ -1,9 +1,9 @@
 Anggota Kelompok:  
-Evorius Fernaldy  535190004  
-Evan Salim        535190012  
-Radika Yudha      535190028  
-Supirman          535190040  
-Afaldo Santanto   535190041  
+Evorius Fernaldy &nbsp;&nbsp;&nbsp;  535190004  
+Evan Salim       &nbsp;&nbsp;&nbsp; 535190012  
+Radika Yudha     &nbsp;&nbsp;&nbsp; 535190028  
+Supirman         &nbsp;&nbsp;&nbsp; 535190040  
+Afaldo Santanto  &nbsp;&nbsp;&nbsp; 535190041  
 
 Tugas masing-masing anggota kelompok:  
 Evorius Fernaldy: Design, Search Function, Category  
