@@ -1,8 +1,8 @@
 Anggota Kelompok:  
 Evorius Fernaldy &nbsp;&nbsp;&nbsp;  535190004  
-Evan Salim       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 535190012  
+Evan Salim       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 535190012  
 Radika Yudha     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 535190028  
-Supirman         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 535190040  
+Supirman         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 535190040  
 Afaldo Santanto  &nbsp;&nbsp;&nbsp; 535190041  
 
 Tugas masing-masing anggota kelompok:  
