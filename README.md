@@ -8,8 +8,8 @@ Afaldo Santanto  &nbsp;&nbsp;&nbsp; 535190041
   
 Tugas masing-masing anggota kelompok:  
 ---
-Evorius Fernaldy: Design, Search Function, Category  
-Evan Salim: Design, Firebase (Login Authentication)  
-Radika Yudha: Design, Membuat cart function (increment decrement)  
-Supirman: Design, Membuat dan mendesign navbar  
-Afaldo Santanto: Design, Search Function, Category  
+Evorius Fernaldy: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Design, Search Function, Category  
+Evan Salim:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Design, Firebase (Login Authentication)  
+Radika Yudha: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design, Membuat cart function (increment decrement)  
+Supirman: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Design, Membuat dan mendesign navbar  
+Afaldo Santanto:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design, Search Function, Category  
